@@ -4,6 +4,8 @@ import { Link,  StaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import Img from "gatsby-image"
+
 class CoursesPage extends React.Component {
 
   render() {
@@ -35,6 +37,12 @@ class CoursesPage extends React.Component {
               <p>
                 {post.excerpt}
               </p>
+              <p>
+                {post.frontmatter.image.id}
+              </p>
+
+       
+              <Img fluid={post.frontmatter.image.childImageSharp.fluid}  />
    
             </div>
           )))}
@@ -65,7 +73,7 @@ export default () => (
               date(formatString: "MMMM DD, YYYY")
               image {
                 childImageSharp {
-                  fluid(maxWidth: 2048, quality: 100) {
+                  fluid(maxWidth: 500, quality: 100) {
                     ...GatsbyImageSharpFluid
                   }
                 }
